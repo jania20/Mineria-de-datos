@@ -1,3 +1,4 @@
+# ------------------- --------------  PRACTICA 1 -----------------------------------
 import pandas as pd
 
  #Cargar datos
@@ -5,6 +6,7 @@ df = pd.read_csv('./archive/games-data.csv')
 
 # Limpieza inicial
 df.columns = df.columns.str.strip()
+
 
 # Convertir fechas
 df['r-date'] = pd.to_datetime(df['r-date'], format='%B %d, %Y', errors='coerce')
@@ -36,20 +38,25 @@ df.to_csv('./cleaned_games_data.csv', index=False)
 print("\nDataset limpio guardado como 'cleaned_games_data.csv'")
 
 
-#practica 2
+# ------------------- --------------  PRACTICA 2 -----------------------------------
 import pandas as pd
 
 # Cargar datos
 df = pd.read_csv('./cleaned_games_data.csv')
 
-# Configuración para mostrar mejor los datos en consola
+df['r-date'] = pd.to_datetime(df['r-date'], errors='coerce')
+
+## Eliminar filas con fechas o scores inválidos
+df = df.dropna(subset=['r-date', 'score'])
+
+# Configuración para visualización
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
 pd.set_option('display.max_colwidth', 20)
 
-# Limpieza adicional de datos - FORMA CORREGIDA
-df = df.replace('', pd.NA)  # Convertir strings vacíos a NA
-df = df.dropna(subset=['score'])  # Eliminar filas sin score
+# Limpieza adicional de datos 
+df = df.replace('', pd.NA)
+
 
 print("\n=== PRIMERAS 5 FILAS ===")
 print(df.head(5).to_string(index=False))
@@ -126,7 +133,43 @@ if 'r-date' in df.columns:
     print("\n=== ESTADÍSTICAS POR AÑO ===")
     print(df.groupby('year')['score'].agg(['mean', 'count']).sort_values('mean', ascending=False))
 
-# Estadísticas por publisher (si existe)
+# Estadísticas por editor (si existe)
 if 'publisher' in df.columns:
     print("\n=== MEJORES EDITORES (SCORE PROMEDIO) ===")
     print(df.groupby('publisher')['score'].agg(['mean', 'count']).sort_values('mean', ascending=False).head(10))
+    
+
+# ------------------- --------------  PRACTICA 3 -----------------------------------
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Configuración general de los gráficos (ACTUALIZADA)
+plt.style.use('seaborn-v0_8')  # o usa 'ggplot', 'fivethirtyeight'
+sns.set_style("whitegrid")
+plt.rcParams['figure.figsize'] = (12, 6)
+plt.rcParams['font.size'] = 12
+
+# 1. Histograma de Scores
+plt.figure(figsize=(10, 6))
+df['score'].hist(bins=20, color='skyblue', edgecolor='black', grid=False)
+plt.title('Distribución de Scores de Juegos', pad=20)
+plt.xlabel('Score', labelpad=10)
+plt.ylabel('Frecuencia', labelpad=10)
+plt.savefig('histograma_scores.png', bbox_inches='tight', dpi=300)
+plt.close()
+
+# 2. Boxplot por Plataforma (top 10)
+plt.figure(figsize=(12, 6))
+top_platforms = df['platform'].value_counts().head(10).index
+df_filtered = df[df['platform'].isin(top_platforms)]
+sns.boxplot(x='platform', y='score', data=df_filtered, palette='viridis')
+plt.title('Distribución de Scores por Plataforma (Top 10)', pad=20)
+plt.xlabel('Plataforma', labelpad=10)
+plt.ylabel('Score', labelpad=10)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('boxplot_plataformas.png', dpi=300)
+plt.close()
+
+
+print("\nVisualizaciones generadas y guardadas como imágenes PNG (300 dpi)")
