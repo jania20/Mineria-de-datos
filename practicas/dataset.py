@@ -2,6 +2,7 @@ from practica_1 import practica_1
 from practica_2 import practica_2
 from practica_3 import practica_3
 from practica_4 import practica_4
+from practica_5 import practica_5
 
 def main():
     print("=== EJECUCIÓN DE TODAS LAS PRÁCTICAS ===")
