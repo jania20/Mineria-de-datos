@@ -9,15 +9,15 @@ The Legend of Zelda: Ocarina of Time   Nintendo64 1998-11-23     99         9.1 
                  Grand Theft Auto IV      Xbox360 2008-04-29     98         7.9          RockstarNorth Action Adventure,Modern,Modern,Open-World      NaN       86   3364
 
 Estadísticas descriptivas:
-              score    user score  players       critics          users
-count  17944.000000  16658.000000    402.0  17944.000000   17944.000000
-mean      70.386647      6.988606      2.0     23.149799     172.797983
-std       12.410885      1.361018      0.0     17.152985    1280.291974
-min       11.000000      0.200000      2.0      0.000000       0.000000
-25%       63.000000      6.300000      2.0     11.000000      11.000000
-50%       72.000000      7.300000      2.0     17.000000      28.000000
-75%       79.000000      7.900000      2.0     30.000000      90.000000
-max       99.000000      9.800000      2.0    126.000000  146262.000000
+                              r-date         score    user score  players       critics          users
+count                          17944  17944.000000  16658.000000    402.0  17944.000000   17944.000000
+mean   2011-03-25 14:40:34.774855424     70.386647      6.988606      2.0     23.149799     172.797983
+min              1995-04-30 00:00:00     11.000000      0.200000      2.0      0.000000       0.000000
+25%              2006-05-09 00:00:00     63.000000      6.300000      2.0     11.000000      11.000000
+50%              2011-03-22 00:00:00     72.000000      7.300000      2.0     17.000000      28.000000
+75%              2016-08-16 00:00:00     79.000000      7.900000      2.0     30.000000      90.000000
+max              2020-11-12 00:00:00     99.000000      9.800000      2.0    126.000000  146262.000000
+std                              NaN     12.410885      1.361018      0.0     17.152985    1280.291974
 
 
 === ESTADÍSTICAS POR GÉNERO ===
@@ -2101,13 +2101,13 @@ user score  0.499437    1.000000      NaN
 players          NaN         NaN      NaN
 
 Tipos de datos:
-name           object
-platform       object
-r-date         object
-score           int64
-user score    float64
-developer      object
-genre          object
-players       float64
-critics         int64
-users           int64
+name                  object
+platform              object
+r-date        datetime64[ns]
+score                  int64
+user score           float64
+developer             object
+genre                 object
+players              float64
+critics                int64
+users                  int64
