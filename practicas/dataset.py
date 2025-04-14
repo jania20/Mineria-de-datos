@@ -4,6 +4,7 @@ from practica_3 import practica_3
 from practica_4 import practica_4
 from practica_5 import practica_5
 from practica_6 import practica_6
+from practica_7 import practica_7
 
 def main():
     print("=== EJECUCIÓN DE TODAS LAS PRÁCTICAS ===")
@@ -12,7 +13,8 @@ def main():
     df = practica_3(df)  # Visualizaciones
     df = practica_4(df)  # Análisis estadístico
     df = practica_5(df)  # Modelos lineales y correlación
-    df = practica_6(df)  # Clasificación con KNN (nueva práctica)
+    df = practica_6(df)  # Clasificación con KNN
+    df = practica_7(df)  # Clustering con K-Means
     print("\n🎉 TODAS LAS PRÁCTICAS COMPLETADAS CON ÉXITO")
 
 if __name__ == "__main__":
