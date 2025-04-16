@@ -6,6 +6,7 @@ from practica_5 import practica_5
 from practica_6 import practica_6
 from practica_7 import practica_7
 from practica_8 import practica_8
+from practica_9 import practica_9 
 
 def main():
     print("=== EJECUCIÓN DE TODAS LAS PRÁCTICAS ===")
@@ -17,6 +18,7 @@ def main():
     df = practica_6(df)  # Clasificación con KNN
     df = practica_7(df)  # Clustering con K-Means
     df = practica_8(df)  # Forecasting con regresión lineal
+    df =  practica_9(df)  # Word Cloud
     print("\n🎉 TODAS LAS PRÁCTICAS COMPLETADAS CON ÉXITO")
 
 if __name__ == "__main__":
